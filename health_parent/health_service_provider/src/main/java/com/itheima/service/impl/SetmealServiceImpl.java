@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import redis.clients.jedis.JedisPool;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +26,6 @@ import java.util.Map;
 public class SetmealServiceImpl implements SetmealService {
     @Autowired
     private SetmealDao setmealDao;
-
     @Autowired
     private JedisPool jedisPool;
     //新增套餐信息,同时需要关联检查组
@@ -48,6 +48,11 @@ public class SetmealServiceImpl implements SetmealService {
         return new PageResult(page.getTotal(),page.getResult());
     }
 
+    @Override
+    public List<Setmeal> findAll() {
+        return setmealDao.findAll();
+    }
+
     // 设置套餐和检查组多对多关系，操作t_setmeal_checkgroup
     public void setSetmealAndCheckgroup (Integer setmealId,Integer[] checkgroupIds){
         if (checkgroupIds!=null && checkgroupIds.length>0){
@@ -60,4 +65,5 @@ public class SetmealServiceImpl implements SetmealService {
             }
         }
     }
+
 }
