@@ -39,7 +39,7 @@ public class SetmealController {
             return new Result(true, MessageConstant.QUERY_SETMEAL_SUCCESS, setmeal);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Result(false, MessageConstant.QUERY_SETMEAL_SUCCESS);
+            return new Result(false, MessageConstant.QUERY_SETMEAL_FAIL);
         }
     }
 }

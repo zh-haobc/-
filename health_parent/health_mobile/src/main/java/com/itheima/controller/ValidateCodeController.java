@@ -2,7 +2,7 @@ package com.itheima.controller;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.itheima.constant.MessageConstant;
-import com.itheima.constant.RedisConstant;
+
 import com.itheima.constant.RedisMessageConstant;
 import com.itheima.entiy.Result;
 import com.itheima.utils.SMSUtils;
