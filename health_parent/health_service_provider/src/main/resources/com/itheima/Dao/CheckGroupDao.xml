@@ -77,4 +77,35 @@
         select *from t_checkgroup
 
     </select>
+
+    <resultMap id="baseResultMap" type="com.itheima.pojo.CheckGroup">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="helpCode" property="helpCode"/>
+        <result column="sex" property="sex"/>
+        <result column="remark" property="remark"/>
+        <result column="attention" property="attention"/>
+    </resultMap>
+
+    <resultMap id="findByIdResultMap" type="com.itheima.pojo.CheckGroup" extends="baseResultMap">
+        <!--检查组和检查项多对多-->
+        <collection
+                property="checkItems"
+                ofType="com.itheima.pojo.CheckItem"
+                column="id"
+                select="com.itheima.dao.CheckItemDao.findCheckItemById"
+
+        >
+
+        </collection>
+    </resultMap>
+
+    <!--根据套餐ID查询关联的检查组详情-->
+    <select id="findCheckGroupById" parameterType="int" resultMap="findByIdResultMap">
+        select * from t_checkgroup
+    where id
+  	in (select checkgroup_id from t_setmeal_checkgroup where setmeal_id=#{id})
+
+    </select>
 </mapper>

@@ -24,10 +24,22 @@ public class SetmealController {
     public Result getAllSetmeal() {
         try {
             List<Setmeal> list = setmealService.findAll();
-            return new Result(false, MessageConstant.GET_SETMEAL_LIST_SUCCESS, list);
+            return new Result(true, MessageConstant.GET_SETMEAL_LIST_SUCCESS, list);
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, MessageConstant.GET_SETMEAL_LIST_FAIL);
+        }
+    }
+
+    //查询套餐ID查询详情（套餐基本信息、套餐对应的检查组信息、检查组对应的检查项信息）
+    @RequestMapping("/findById")
+    public Result findById(int id ) {
+        try {
+            Setmeal setmeal = setmealService.findById(id);
+            return new Result(true, MessageConstant.QUERY_SETMEAL_SUCCESS, setmeal);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, MessageConstant.QUERY_SETMEAL_SUCCESS);
         }
     }
 }

@@ -25,11 +25,9 @@ public class Order implements Serializable{
         this.id = id;
     }
 
-    public Order(Integer memberId, Date orderDate, String orderType, String orderStatus, Integer setmealId) {
+    public Order(Integer memberId, Date orderDate,  Integer setmealId) {
         this.memberId = memberId;
         this.orderDate = orderDate;
-        this.orderType = orderType;
-        this.orderStatus = orderStatus;
         this.setmealId = setmealId;
     }
 
