@@ -112,6 +112,12 @@ public class SetmealServiceImpl implements SetmealService {
         return setmealDao.findById(id) ;
     }
 
+    //查询套餐预约占比数据
+    public List<Map<String, Object>> findSetmealCount() {
+
+        return setmealDao.findSetmealCount();
+    }
+
     // 设置套餐和检查组多对多关系，操作t_setmeal_checkgroup
     public void setSetmealAndCheckgroup (Integer setmealId,Integer[] checkgroupIds){
         if (checkgroupIds!=null && checkgroupIds.length>0){
